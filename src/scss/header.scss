@@ -1,0 +1,504 @@
+//====================================================================================================
+.header {
+
+	&__top {
+		background-color:$mainDarkColor;
+		color: #fff;
+	}
+
+	.body-header {
+
+		&__actions {
+		}
+	}
+
+	.header {
+
+		&__catalog {
+			
+		}
+	}
+}
+// top-header
+.top-header {
+	padding: rem(10) 0;//Відступ безпеки
+
+	&__container {
+		display: flex;
+		align-items: center;
+		gap: rem(20);//Відступ безпеки
+		min-height: rem(60);
+	}
+
+	&__menu {
+		flex: 1 1 auto; //Займає всю ширину блока
+	}
+
+	&__user {
+		display: inline-flex;
+		align-items: center;
+		font-weight: 600;
+		line-height: math.div(22,18);
+
+		&:hover{
+			span{
+				text-decoration: underline;
+			}
+		}
+
+		&::before {//бефор це і є іконка "user"
+			font-size: rem(28);
+			margin-right: em(15,28);
+			//margin-right: em(15,28); якщо змін шріфт міняється і отступ
+		}
+	}
+}
+.menu {
+
+	&__body {
+	}
+
+	&__list {
+		display: flex;
+		flex-wrap: wrap;
+		row-gap: 5px;
+		@include adaptiveValue("column-gap", 60, 20);
+		//Адаптивний відступ викор. на геб з 60пкс до 20пкс
+	}
+
+	&__item {
+	}
+
+	&__link {
+		font-size:rem(16);
+		line-height: math.div(20,16);
+		@media (any-hover: hover){
+			&:hover{
+				text-decoration: underline;
+			}
+		}
+	}
+}
+
+//body-header
+.header {
+
+	&__body {
+		
+	}
+}
+
+.body-header {
+	padding: rem(10) 0;
+	background-color: #ECF1F2;;
+	&__container {
+		display: flex;
+		min-height: rem(70);
+		align-items: center;
+	}
+
+	&__logo {
+		//загружаєм наш логотип з папки іконок---
+		@extend %ic;
+		@extend ._icon-logo;
+		//загружаєм наш логотип з папки іконок---
+		font-size: rem(42);
+		color: $mainDarkColor;
+	}
+
+	&__search {
+		//прижимає body-header__actions до правого боку
+		flex: 1 1 auto;
+		padding-right: rem(20);
+		@include adaptiveValue("padding-left",158,20);
+	}
+}
+
+.search-header {
+		max-width: rem(377);
+		background-color: rgba(7, 7, 7, 0.03);
+		border-radius: rem(3);
+		position: relative;
+		border: 1px solid rgba(4, 4, 4, 0.5);
+
+	&__button {
+		position: absolute;
+		top: 0;
+		left: rem(8);
+		height: rem(41);
+		width: rem(41);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-color:transparent;
+		color: rgba(0, 0, 0, 0.5);
+	}
+
+	&__input {
+		width: 100%;
+		padding: 0 rem(20) 0 rem(50);
+		height: rem(41);
+		background-color: rgba(7, 7, 7, 0.03);
+		border-radius: rem(3);
+		font-size: rem(15);
+	}
+}
+
+// actions
+
+.actions-header {
+	display: flex;
+	align-items: center;
+	column-gap: rem(30);
+
+	&__location {
+		display: inline-flex;
+		align-items: center;
+		font-weight: 600;
+		margin: 0px rem(25) 0px 0px;
+
+		@media (any-hover: hover){
+			&:hover{
+				span {
+					text-decoration: underline;
+				}
+				
+			}
+		}
+
+		&::before { //іконка локації _icon-location
+			font-size: rem(24);
+			margin: 0px em(10,24) 0px 0px;
+		}
+	}
+
+	&__phones {
+	}
+
+	&__favorite {
+		font-size: rem(27);
+	}
+
+	&__cart {
+	}
+}
+
+.phones-header {
+
+	&__items {
+	}
+
+	&__item {
+		position: relative;
+		display:flex;
+	}
+
+	&__phone {
+		font-weight:600;
+		white-space: nowrap;
+		line-height: math.div(22,18);
+
+	}
+
+	&__arrow {
+		color:#E8AA31;
+		font-size: rem(12);
+		margin: 0px 0px 0px em(17,12);
+		transition: transform 0.5s ease 0s;
+	
+	&._spoller-active {//активація спойлера
+		transform: rotate(180deg);
+	}
+}
+
+	&__list {
+		position: absolute;
+		top: 100%;
+		width: 100%;
+		left: 0;
+		margin: rem(5) 0px 0px 0px;
+		background-color: #fff;
+		border-radius: rem(10);
+		padding: rem(15);
+		box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+		z-index: 1;
+
+		li {
+			&:not(:last-child) {
+				margin-bottom: em(8,18);
+			}
+		}
+	}
+
+	&__callback {
+		margin: rem(3) 0px 0px 0px;
+		color: #E8AA31;
+		font-weight: 700;
+		line-height: math.div(22,18);
+
+		&:hover{
+			text-decoration: underline;
+		}
+	}
+}
+
+.cart-header {
+	display: flex;
+	align-items: center;
+	column-gap: rem(15);
+
+	&__icon {
+		flex: 0 0 37px;
+		font-size: rem(35);
+		position: relative;
+		
+		span {
+			position: absolute;
+			background-color: #E8AA31;
+			font-size: rem(11);
+			padding: rem(3) rem(5);
+			border-radius: 50%;
+			color: #fff;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			top: rem(-2);
+			right: 0;
+		}
+	}
+
+	&__body {
+		font-size: rem(16);
+		line-height: math.div(20,16);
+		font-weight: 500;
+		flex: 0 0 auto;
+	}
+
+	&__summ {
+		font-weight: 500;
+		&:not(:last-child) {
+			margin-bottom: em(5,16);
+		}
+	}
+
+	&__link {
+		color: #E8AA31;
+
+		@media (any-hover: hover){
+			&:hover{
+				text-decoration: underline;
+			}
+		}
+	}
+}
+
+// catalog
+
+.catalog-header {
+	position: relative;
+	background-color: $mainDarkColor;
+	color: #fff;
+
+	&__container {
+		
+	}
+
+	&__menu {
+	}
+}
+.menu-catalog {
+
+	&__list {
+		display: flex;
+		gap: rem(10);
+		justify-content: space-between;
+	}
+
+	&__item {
+	}
+
+	&__link {
+		//велика область натискання силки
+		min-height: rem(70);
+		padding: 0 rem(10);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+		position: relative;
+		transition: color 0.3s ease 0s;
+
+		&::after{//лінк полоска
+			content:"";
+			opacity: 0;
+			visibility: hidden;
+			position: absolute;
+			bottom: 0;
+			left: rem(10);
+			height: rem(2);
+			width: calc(100% - rem(20));
+			background-color: #E8AA31;
+			transition: all 0.3s ease 0s;
+		}
+
+		@media (any-hover: hover){
+			&:hover{
+				color: #E8AA31;
+				&::after {
+					opacity: 1;
+					visibility: visible;
+				}
+			}
+		}
+
+		&._sub-menu-active {
+			color: #E8AA31;
+			&::after  {
+				opacity: 1;
+				visibility: visible;
+			}
+		}
+	}
+
+	&__sub-menu {//випадне меню
+		width: 100%;
+		left: 0;
+		top: 100%;
+		background-color: $mainDarkColor;
+	}
+}
+
+.sub-menu-catalog {
+
+	&__block {
+		display: none;
+		padding-bottom: rem(30);
+
+		&._sub-menu-open {
+			display: flex;
+		}
+	}
+
+	&__container {
+		padding:0;
+	}
+
+	&__column {
+		flex: 0 1 rem(320);
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__category {
+		align-self: flex-start;
+		font-size: rem(16);
+		font-weight: 700;
+		line-height: math.div(20,16);
+		padding: rem(30) rem(15);
+		
+		@media (any-hover: hover){
+			&:hover{
+				text-decoration: underline;
+			}
+		}
+	}
+
+	&__list {
+		flex: 1 1 auto;
+		display: flex;
+		flex-direction: column;
+		gap: rem(20);
+		padding: rem(30) rem(15);
+		border-top: 1px solid rgba(255, 255, 255, 0.3);
+		border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+	}
+
+	&__item {
+
+	}
+
+	&__link {
+		font-size: rem(16);
+		line-height: math.div(20,16);
+
+		@media (any-hover: hover){
+			&:hover{
+				text-decoration: underline;
+			}
+		}
+	}
+
+	&__all {
+		align-self: flex-start;
+		font-weight: 500;
+		font-size: rem(16);
+		line-height: math.div(20,16);
+		padding-top: rem(30);
+		padding-right: rem(15);
+		padding-left: rem(15);
+
+		color: #E8AA31;
+
+		@media (any-hover: hover){
+			&:hover{
+				text-decoration: underline;
+			}
+		}
+	}
+}
+
+
+
+
+//====================================================================================================
+
+//Burger
+.icon-menu {
+	display: none;
+	@media (max-width: $mobile) {
+		display: block;
+		position: relative;
+		flex: 0 0 30px;//використовуєм тоді коли бургер в флексовому контейнері
+		// width: rem(30);
+		height: rem(18);
+		cursor: pointer;
+		z-index: 5;
+		span,
+		&::before,
+		&::after {
+			content: "";
+			transition: all 0.3s ease 0s;
+			right: 0;
+			position: absolute;
+			width: 100%;
+			height: rem(2);
+			background-color: #fff;
+		}
+		&::before {
+			top: 0;
+		}
+		&::after {
+			bottom: 0;
+		}
+		span {
+			top: calc(50% - rem(1));
+		}
+		.menu-open & {
+			span {
+				width: 0;
+			}
+			&::before,
+			&::after {
+			}
+			&::before {
+				top: calc(50% - rem(1));
+				transform: rotate(-45deg);
+			}
+			&::after {
+				bottom: calc(50% - rem(1));
+				transform: rotate(45deg);
+			}
+		}
+	}
+}
+
